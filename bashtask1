@@ -1,0 +1,47 @@
+#!/bin/bash
+
+ function hello {
+    echo "Hello! Please usage parametrs:"
+    echo
+    echo "a, --all    This key displays the IP addresses and symbolic names of all hosts in the current  subnet"
+    echo "t, --target This key displays a list of open system TCP ports."
+    echo
+}
+ function runnetstat {
+netstat -tulpn | grep LISTEN
+}
+ function runarp {
+arp -a
+}
+
+ function check {
+                        case $1 in
+                         a) echo "Use param a";;
+                         t) echo "Use param T";;
+                         *) echo "Unknou parametr!!!";;
+esac
+}
+function runnetstat {
+netstat -tulpn | grep LISTEN
+}
+
+#PROGRAM
+clear
+echo
+echo
+
+if [ -n "$1" ]
+then  
+case $1 in
+a) echo " OK! Use param a -This key displays the IP addresses and symbolic names of all hosts in the current  subnet";echo;runarp;;
+t) echo " OK! Use param t -This key displays a list of open system TCP ports";echo;runnetstat;;
+*) echo "Unknow parametr!!!";;
+        esac
+else
+hello
+fi
+echo
+echo " Thats ALL :-) "
+echo
+
+
